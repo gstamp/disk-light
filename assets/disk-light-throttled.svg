@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" fill="none" role="img" aria-labelledby="throttled-title throttled-description">
+  <title id="throttled-title">Disk Light: throttled</title>
+  <desc id="throttled-description">An illuminated red disk activity light indicating a throttled disk, with a dark graphite rim and a soft warm glow. The background is transparent.</desc>
+  <defs>
+    <radialGradient id="throttled-halo">
+      <stop offset="0.52" stop-color="#FF293B" stop-opacity="0.28"/>
+      <stop offset="0.76" stop-color="#FF293B" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#FF293B" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="throttled-rim" x1="36" y1="22" x2="88" y2="107" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#616874"/>
+      <stop offset="0.35" stop-color="#303640"/>
+      <stop offset="1" stop-color="#12161E"/>
+    </linearGradient>
+    <radialGradient id="throttled-lens" cx="0" cy="0" r="1" gradientTransform="translate(53 45) rotate(66) scale(67 65)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFD3D6"/>
+      <stop offset="0.24" stop-color="#FF7D87"/>
+      <stop offset="0.57" stop-color="#FF3B4C"/>
+      <stop offset="0.82" stop-color="#EC1630"/>
+      <stop offset="1" stop-color="#A80925"/>
+    </radialGradient>
+    <linearGradient id="throttled-reflection" x1="56" y1="32" x2="64" y2="69" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFECEF" stop-opacity="0.7"/>
+      <stop offset="1" stop-color="#FFECEF" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="throttled-edge" x1="64" y1="26" x2="64" y2="102" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFD2D9" stop-opacity="0.65"/>
+      <stop offset="0.5" stop-color="#FF6072" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#FF3854" stop-opacity="0.5"/>
+    </linearGradient>
+  </defs>
+  <circle cx="64" cy="64" r="62" fill="url(#throttled-halo)"/>
+  <circle cx="64" cy="65" r="45" fill="#11151C" fill-opacity="0.18"/>
+  <circle cx="64" cy="64" r="43" fill="url(#throttled-rim)"/>
+  <circle cx="64" cy="64" r="42.5" stroke="#8C939D" stroke-opacity="0.28"/>
+  <circle cx="64" cy="64" r="38.5" fill="#151820"/>
+  <circle cx="64" cy="64" r="36.5" fill="url(#throttled-lens)"/>
+  <circle cx="64" cy="64" r="36" stroke="url(#throttled-edge)"/>
+  <path d="M37 51C42 39 52 33 64 33C75 33 84 39 89 48C79 43 72 48 63 52C52 57 44 57 37 51Z" fill="url(#throttled-reflection)"/>
+  <path d="M47 37C51 34 57 32 63 32" stroke="#FFF0F2" stroke-opacity="0.8" stroke-width="2" stroke-linecap="round"/>
+  <path d="M47 90C58 97 72 97 83 89" stroke="#FF7181" stroke-opacity="0.35" stroke-width="1.5" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://t3.codes/schema/t3.json",
+  "iconPath": "assets/disk-light-busy.svg",
+  "scripts": [
+    {
+      "name": "Check formatting",
+      "command": "cargo fmt --all -- --check",
+      "icon": "lint"
+    },
+    {
+      "name": "Check (Windows x64)",
+      "command": "cargo check --target x86_64-pc-windows-msvc",
+      "icon": "debug"
+    },
+    {
+      "name": "Build release (Windows x64)",
+      "command": "cargo build --release --target x86_64-pc-windows-msvc",
+      "icon": "build"
+    },
+    {
+      "name": "Run (Windows x64)",
+      "command": "cargo run --release --target x86_64-pc-windows-msvc",
+      "icon": "play"
+    }
+  ]
+}

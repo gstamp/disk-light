@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" fill="none" role="img" aria-labelledby="busy-title busy-description">
+  <title id="busy-title">Disk Light: busy</title>
+  <desc id="busy-description">An illuminated amber disk activity light indicating a busy disk, with a dark graphite rim and a soft warm glow. The background is transparent.</desc>
+  <defs>
+    <radialGradient id="busy-halo">
+      <stop offset="0.52" stop-color="#FF631F" stop-opacity="0.28"/>
+      <stop offset="0.76" stop-color="#FF631F" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#FF631F" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="busy-rim" x1="36" y1="22" x2="88" y2="107" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#616874"/>
+      <stop offset="0.35" stop-color="#303640"/>
+      <stop offset="1" stop-color="#12161E"/>
+    </linearGradient>
+    <radialGradient id="busy-lens" cx="0" cy="0" r="1" gradientTransform="translate(53 45) rotate(66) scale(67 65)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF0A3"/>
+      <stop offset="0.24" stop-color="#FFC553"/>
+      <stop offset="0.57" stop-color="#FF9B24"/>
+      <stop offset="0.82" stop-color="#F47A16"/>
+      <stop offset="1" stop-color="#B8540B"/>
+    </radialGradient>
+    <linearGradient id="busy-reflection" x1="56" y1="32" x2="64" y2="69" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFCE7" stop-opacity="0.7"/>
+      <stop offset="1" stop-color="#FFFCE7" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="busy-edge" x1="64" y1="26" x2="64" y2="102" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF2C0" stop-opacity="0.65"/>
+      <stop offset="0.5" stop-color="#FFB053" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#FF7C44" stop-opacity="0.5"/>
+    </linearGradient>
+  </defs>
+  <circle cx="64" cy="64" r="62" fill="url(#busy-halo)"/>
+  <circle cx="64" cy="65" r="45" fill="#11151C" fill-opacity="0.18"/>
+  <circle cx="64" cy="64" r="43" fill="url(#busy-rim)"/>
+  <circle cx="64" cy="64" r="42.5" stroke="#8C939D" stroke-opacity="0.28"/>
+  <circle cx="64" cy="64" r="38.5" fill="#151820"/>
+  <circle cx="64" cy="64" r="36.5" fill="url(#busy-lens)"/>
+  <circle cx="64" cy="64" r="36" stroke="url(#busy-edge)"/>
+  <path d="M37 51C42 39 52 33 64 33C75 33 84 39 89 48C79 43 72 48 63 52C52 57 44 57 37 51Z" fill="url(#busy-reflection)"/>
+  <path d="M47 37C51 34 57 32 63 32" stroke="#FFFBE0" stroke-opacity="0.8" stroke-width="2" stroke-linecap="round"/>
+  <path d="M47 90C58 97 72 97 83 89" stroke="#FFAC63" stroke-opacity="0.35" stroke-width="1.5" stroke-linecap="round"/>
+</svg>
