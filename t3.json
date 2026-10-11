@@ -18,6 +18,11 @@
       "icon": "build"
     },
     {
+      "name": "Build MSI installer (Windows x64)",
+      "command": "pwsh -NoProfile -File ./scripts/build-installer.ps1",
+      "icon": "build"
+    },
+    {
       "name": "Run (Windows x64)",
       "command": "cargo run --release --target x86_64-pc-windows-msvc",
       "icon": "play"

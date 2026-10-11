@@ -1,0 +1,64 @@
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Package Name="Disk Light" Manufacturer="Disk Light" Version="$(var.AppVersion)"
+           UpgradeCode="C8419C98-0771-4C90-96AE-ABF61561499E" Scope="perUser">
+    <MajorUpgrade DowngradeErrorMessage="A newer version of Disk Light is already installed."
+                  Schedule="afterInstallInitialize" />
+    <MediaTemplate EmbedCab="yes" />
+    <Property Id="WINDOWS_BUILD">
+      <RegistrySearch Id="FindWindowsBuild" Root="HKLM"
+                      Key="SOFTWARE\Microsoft\Windows NT\CurrentVersion"
+                      Name="CurrentBuildNumber" Type="raw" Bitness="always64" />
+    </Property>
+    <Launch Condition="Installed OR (VersionNT64 AND WINDOWS_BUILD &gt;= 10240)"
+            Message="Disk Light requires 64-bit Windows 10 or newer." />
+    <Property Id="ARPNOMODIFY" Value="1" />
+    <Icon Id="DiskLightIcon.exe" SourceFile="$(var.IconPath)" />
+    <Property Id="ARPPRODUCTICON" Value="DiskLightIcon.exe" />
+    <!-- Startup can be enabled after MSI installation, so it is not always
+         owned by an installed registry component. Remove just this value. -->
+    <CustomAction Id="RemoveStartupEntry" Directory="System64Folder"
+                  ExeCommand="&quot;[System64Folder]reg.exe&quot; delete HKCU\Software\Microsoft\Windows\CurrentVersion\Run /v DiskLight /f"
+                  Execute="deferred" Impersonate="yes" Return="ignore" />
+    <InstallExecuteSequence>
+      <Custom Action="RemoveStartupEntry" Before="RemoveRegistryValues"
+              Condition="REMOVE=&quot;ALL&quot; AND NOT UPGRADINGPRODUCTCODE AND STARTUP_ENTRY" />
+    </InstallExecuteSequence>
+    <Property Id="STARTUP_ENTRY">
+      <RegistrySearch Id="FindStartupEntry" Root="HKCU"
+                      Key="Software\Microsoft\Windows\CurrentVersion\Run"
+                      Name="DiskLight" Type="raw" Bitness="always64" />
+    </Property>
+
+    <StandardDirectory Id="LocalAppDataFolder">
+      <Directory Id="ProgramsFolder" Name="Programs">
+        <Directory Id="INSTALLFOLDER" Name="Disk Light">
+          <Component Id="AppBinary" Guid="4B28B7BA-0FC8-4E61-A1C2-2F8D6777D33B">
+            <File Id="DiskLightExe" Source="$(var.BinaryPath)" />
+            <RegistryValue Root="HKCU" Key="Software\DiskLight\Installer" Name="Installed"
+                           Type="integer" Value="1" KeyPath="yes" />
+            <RemoveFolder Id="RemoveAppFolder" On="uninstall" />
+            <RemoveFolder Id="RemoveEmptyProgramsFolder" Directory="ProgramsFolder" On="uninstall" />
+          </Component>
+          <Component Id="ExistingStartupEntry" Guid="690E12BD-9A6A-4249-8A14-146669AC4A52"
+                     Condition="STARTUP_ENTRY" Transitive="yes">
+            <RegistryValue Root="HKCU" Key="Software\Microsoft\Windows\CurrentVersion\Run"
+                           Name="DiskLight" Type="string" Value="&quot;[INSTALLFOLDER]disk-light.exe&quot;" KeyPath="yes" />
+          </Component>
+        </Directory>
+      </Directory>
+    </StandardDirectory>
+    <StandardDirectory Id="ProgramMenuFolder">
+      <Component Id="StartMenuShortcut" Guid="7BD1A320-9319-4ABC-8FE2-BC932FB93910">
+        <Shortcut Id="DiskLightShortcut" Name="Disk Light" Target="[INSTALLFOLDER]disk-light.exe"
+                  WorkingDirectory="INSTALLFOLDER" Icon="DiskLightIcon.exe" IconIndex="0" />
+        <RegistryValue Root="HKCU" Key="Software\DiskLight\Installer" Name="Shortcut"
+                       Type="integer" Value="1" KeyPath="yes" />
+      </Component>
+    </StandardDirectory>
+    <Feature Id="Main" Title="Disk Light" Level="1">
+      <ComponentRef Id="AppBinary" />
+      <ComponentRef Id="StartMenuShortcut" />
+      <ComponentRef Id="ExistingStartupEntry" />
+    </Feature>
+  </Package>
+</Wix>
