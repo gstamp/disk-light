@@ -57,4 +57,4 @@ The ICO includes sizes from 16 to 256 pixels and is embedded by `build.rs`.
 - Adds a per-user sign-in entry only when **Start Disk Light when I sign in** is selected.
 - Uses no network access, toast notifications, or sounds.
 
-The release binary is optimized for a small resident footprint. The under-20-MiB idle working-set figure is a target; it still needs a recorded measurement on a named Windows 10 or 11 x64 machine before it can be treated as verified.
+The release binary is optimized for a small resident footprint. The under-20-MiB idle working-set figure is a target.
