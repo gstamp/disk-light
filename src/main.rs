@@ -8,6 +8,8 @@ mod config;
 mod monitor;
 #[cfg(windows)]
 mod ui;
+#[cfg(windows)]
+mod win32;
 
 #[cfg(windows)]
 fn main() {

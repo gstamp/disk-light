@@ -2,18 +2,23 @@ use serde::{Deserialize, Serialize};
 use std::fs;
 use std::path::PathBuf;
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy, Default, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(rename_all = "kebab-case")]
 pub enum OverlayPosition {
+    #[default]
     BottomRight,
     BottomLeft,
     TopRight,
     TopLeft,
 }
 
-impl Default for OverlayPosition {
-    fn default() -> Self {
-        Self::BottomRight
+impl OverlayPosition {
+    pub const fn is_right(self) -> bool {
+        matches!(self, Self::BottomRight | Self::TopRight)
+    }
+
+    pub const fn is_bottom(self) -> bool {
+        matches!(self, Self::BottomRight | Self::BottomLeft)
     }
 }
 
@@ -99,7 +104,7 @@ impl Settings {
         Ok(())
     }
 
-    pub fn sanitize(&mut self) {
+    fn sanitize(&mut self) {
         self.trigger_percent = self.trigger_percent.clamp(2, 100);
         self.clear_percent = self.clear_percent.clamp(1, self.trigger_percent - 1);
         self.trigger_seconds = self.trigger_seconds.clamp(1, 30);

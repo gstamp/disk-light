@@ -114,7 +114,7 @@ impl ActivityState {
                 disks.len(),
                 if disks.len() == 1 { "" } else { "s" }
             ),
-            active_disk: self.active.then_some(busiest).flatten(),
+            active_disk: if self.active { busiest } else { None },
             top_process: None,
             disks,
             light_active: self.active,
